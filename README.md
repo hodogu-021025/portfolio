@@ -26,8 +26,17 @@ npm run build
 
 ## 배포
 
-`main` 에 푸시하면 GitHub Actions 가 테스트 → 빌드 → `ghcr.io/hodogu-021025/portfolio` 이미지(amd64/arm64)를 올린다.
+1. `main` 에 푸시하면 GitHub Actions 가 테스트 → 빌드 → `ghcr.io/hodogu-021025/portfolio` 이미지(amd64/arm64)를 올린다.
+2. CI 가 끝나면 company-cms 저장소에서 포트폴리오 컨테이너만 바꾼다 (STAR 는 그대로):
+
+   ```bash
+   bash deploy/scripts/deploy-oracle.sh --portfolio            # 최신 이미지
+   bash deploy/scripts/deploy-oracle.sh --portfolio sha-xxxxxxx  # 특정 커밋으로 되돌리기
+   ```
+
 서버는 STAR 와 같은 Oracle Cloud VM 이고, Caddy 가 `hdg3383.com` 을 이 컨테이너로 넘긴다 (설정은 company-cms 저장소의 `deploy/`).
+여기에 없는 주소(404)는 Caddy 가 예전 STAR 주소로 보고 `star.hdg3383.com` 의 같은 경로로 보낸다.
+그래서 `public/` 에 파일(이력서 PDF 등)을 넣어도 서버 설정은 고칠 필요가 없다.
 
 ## 라이선스
 

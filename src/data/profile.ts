@@ -1,4 +1,4 @@
-// 표지·연락처에 쓰는 내 정보. 이력서 PDF 는 public/resume.pdf 를 넣으면 버튼이 켜진다.
+// 표지·연락처에 쓰는 내 정보. 이력서는 public/resume.pdf 를 넣고 resume 에 "/resume.pdf" 를 적으면 버튼이 생긴다.
 export const PROFILE = {
   name: "홍동국",
   role: "풀스택 개발자",
